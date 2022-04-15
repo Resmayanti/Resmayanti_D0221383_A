@@ -1,0 +1,58 @@
+impor  jawa . yaitu .*;
+impor  jawa . lang . mencerminkan .*;
+impor  jawa . utilitas .*;
+impor  jawa . util . ekspresi reguler .*;
+impor  jawa . keamanan .*;
+
+
+ Solusi kelas  publik {
+
+	public  static  void  main ( String [] args ) throws  Exception {
+		JanganTerminasi . melarangKeluar ();	
+
+		coba {
+			BufferedReader  br = new  BufferedReader ( new  InputStreamReader ( System . in ));
+			int  bilangan = Bilangan bulat . parseInt ( br . readLine (). trim ());
+			objek  o ; // Harus digunakan untuk menyimpan referensi instance kelas Solution.Inner.Private
+        Batin  batin = batin baru  ();
+        o = dalam . baru  Pribadi ();
+        batin . Private  innerPrivate = ( Inner . Private ) o ;
+         Respons string = innerPrivate . kekuatan2 ( angka );
+        Sistem . keluar . println ( num + " adalah " + respon );
+		Sistem . keluar . println ( "Instance dari kelas: " + o . getClass (). getCanonicalName () + " telah dibuat" );
+		
+		} //akhir percobaan
+		
+		catch ( DoNotTerminate . ExitTrappedException  e ) {
+			Sistem . keluar . println ( "Penghentian Gagal!!" );
+		}
+	} //akhir dari main
+	 kelas  statis Batin {
+		 kelas  privat Privat {
+			private  String  powerof2 ( int  num ){
+				kembali (( num & num - 1 )== 0 )? "kekuatan 2" : "bukan kekuatan 2" ;
+			}
+		}
+	} //akhir Inner
+	
+} //akhir dari Solusi
+
+class  DoNotTerminate { //Kelas ini mencegah exit(0)
+	 
+     kelas statis  publik ExitTrappedException memperluas SecurityException {   
+
+		private  static  final  long  serialVersionUID = 1L ;
+    }
+ 
+    public  static  void  forbidExit () {
+        akhir  SecurityManager  securityManager = baru  SecurityManager () {
+            @ Ganti
+            public  void  checkPermission ( Izin  izin ) {
+                if ( izin . getName (). berisi ( "exitVM" )) {
+                    lempar  ExitTrappedException baru  ();
+                }
+            }
+        };
+        Sistem . setSecurityManager ( securityManager );
+    }
+}
