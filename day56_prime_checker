@@ -1,0 +1,77 @@
+impor  jawa . yaitu .*;
+impor  jawa . utilitas .*;
+impor  jawa . teks .*;
+impor  jawa . matematika .*;
+impor  jawa . util . ekspresi reguler .*;
+impor  jawa . lang . mencerminkan .*;
+
+impor  java statis  . lang . Sistem . di ;
+
+kelas  Perdana {
+    void  checkPrime ( int ... angka ){
+        untuk ( int  angka : angka ){
+            if ( isPrime ( num )){
+                Sistem . keluar . cetak ( bil + " " );
+            }
+        }
+        Sistem . keluar . println ();
+    }
+    
+    boolean  isPrime ( int  n ){
+        jika ( n < 2 ){
+            kembali  salah ;
+        } else  jika ( n == 2 ){
+            kembali  benar ;
+        } else  jika ( n % 2 == 0 ){
+            kembali  salah ;
+        }
+        
+        int  kuadrat = ( int ) Matematika . kuadrat ( n );
+        untuk ( int  i = 3 ; i <= kuadrat ; i *= 2 ){
+            jika ( n % saya == 0 ){
+                kembali  salah ;
+            }
+        }
+        kembali  benar ;
+    }
+}
+ Solusi kelas  publik {
+
+	public  static  void  main ( String [] args ) {
+		coba {
+		BufferedReader  br = new  BufferedReader ( InputStreamReader baru  ( dalam ));
+		int  n1 = Bilangan bulat . parseInt ( br . readLine ());
+		int  n2 = Bilangan bulat . parseInt ( br . readLine ());
+		int  n3 = Bilangan bulat . parseInt ( br . readLine ());
+		int  n4 = Bilangan bulat . parseInt ( br . readLine ());
+		int  n5 = Bilangan bulat . parseInt ( br . readLine ());
+		Perdana  ob = Perdana baru  ();
+		ob . cekPrime ( n1 );
+		ob . cekPrime ( n1 , n2 );
+		ob . cekPrime ( n1 , n2 , n3 );
+		ob . checkPrime ( n1 , n2 , n3 , n4 , n5 );	
+		Metode [] metode = Perdana . kelas . getDeclaredMethods ();
+		Set < String > set = new  HashSet <>();
+		 kelebihan boolean = false ;
+		for ( int  i = 0 ; i < metode . length ; i ++)
+		{
+			if ( set . berisi ( metode [ i ]. getName ()))
+			{
+				kelebihan = benar ;
+				istirahat ;
+			}
+			mengatur . tambahkan ( metode [ i ]. getName ());
+			
+		}
+		jika ( kelebihan )
+		{
+			melempar  Pengecualian baru  ( "Overloading tidak diizinkan" );
+		}
+		}
+		tangkap ( Pengecualian  e )
+		{
+			Sistem . keluar . println ( e );
+		}
+	}
+	
+}
